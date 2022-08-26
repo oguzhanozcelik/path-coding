@@ -20,8 +20,5 @@ please see [CONTRIBUTING.md](https://github.com/optimum7com/ionemoto-template/bl
 
 ## License
 
-git config --global user.email "info@webmedya.co"
-git config --global user.name "Oğuzhan"
-git config --global user.password "123123Oz."
 
 
