@@ -16,7 +16,7 @@ Main JS File:
 ## Contributing
 
 For help on setting up the repository locally, building, testing, and contributing
-please see [CONTRIBUTING.md](https://github.com/optimum7com/ionemoto-template/blob/main/CONTRIBUTING.md).
+please see [CONTRIBUTING.md](https://github.com/webmedya/path-coding/blob/master/CONTRIBUTING.md).
 
 ## License
 
