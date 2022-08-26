@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>PATH Coding Challenge</title>
+
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/main.css" type="text/css"/>
+</head>
+
+<body>
+
+<header>
+    <nav class="navbar navbar-expand-lg bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="assets/images/path-logo-grup-acik-zemin.svg" alt="PATH Product & Software House">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item my-favorites">
+                        <a class="nav-link" href="#">Favorites</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <button class="btn btn-danger shopping-cart" type="button">
+                        <img src="assets/images/shop.svg"
+                             class="img-fluid rounded-start lazy" alt="Shopping Cart"/>
+                        Cart(<span class="item-total-quantity"></span>)
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="main-section">
+    <div class="container">
+        <div class="row" id="products">
+            <h1>Products</h1>
+        </div>
+    </div>
+</div>
+
+<div class="toast bottom-0 start-50 translate-middle-x position-fixed bg-white" role="alert" aria-live="assertive" aria-atomic="true" data-delay="2000">
+    <div class="toast-header">
+        <strong class="mr-auto toast-title">Bootstrap</strong>
+    </div>
+    <div class="toast-body">
+    </div>
+</div>
+<div class="modal fade favoriteModal" id="favoriteModal" tabindex="-1" role="dialog" aria-labelledby="favoriteModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title favorite-title" id="favoriteModalLabel">My Favorites</h5>
+                <button type="button" class="btn btn-danger close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row favorites-list">
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary close-favorite-modal" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade gameModal" id="gameModal" tabindex="-1" role="dialog" aria-labelledby="gameModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title single-title" id="gameModalLabel">Product Quick View</h5>
+                <button type="button" class="btn btn-danger close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row align-items-center">
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-12 product-image">
+                        <img src="assets/images/loading.svg" class="img-fluid rounded-start w-100" alt=""/>
+                    </div>
+                    <div class="col-lg-8 col-md-8 col-sm-6 col-12">
+                        <div class="co-12 mb-3">
+                            <div class="d-flex w-100 justify-content-start cheapest-modal">
+                                <span>Cheapest Price Ever:</span>
+                                <span class="price"></span>
+                                <span class="date"></span>
+                            </div>
+                        </div>
+                        <div class="list-group">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary close-game-modal" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade cartModal" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title single-title" id="cartModalLabel">Shopping Cart</h5>
+                <button type="button" class="btn btn-danger close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body p-2">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="card-body">
+                                            <div class="shop-product">
+                                                <div class="d-flex justify-content-between">
+                                                    <div class="d-flex flex-row align-items-center">
+                                                        <div class="ms-3">
+                                                            <p>Product</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex flex-row align-items-center">
+                                                        <div style="width: 50px;">
+                                                            <p class="fw-normal mb-0">Qty</p>
+                                                        </div>
+                                                        <div style="width: 80px;">
+                                                            <p class="mb-0">Price</p>
+                                                        </div>
+                                                        <div style="width: 80px;">
+                                                            <p class="mb-0">Total</p>
+                                                        </div>
+                                                        <div style="width: 25px;">
+                                                            <p class="mb-0"></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="shopping-list"></div>
+                                        <div class="card-body cart-total">
+                                            <div class="d-flex justify-content-between">
+                                                <div class="d-flex flex-row align-items-center">
+                                                    <div class="ms-3">
+                                                        <p></p>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex flex-row align-items-center">
+                                                    <div style="width: 50px;">
+                                                        <p class="fw-normal mb-0"></p>
+                                                    </div>
+                                                    <div style="width: 80px;">
+                                                        <p class="mb-0">Total</p>
+                                                    </div>
+                                                    <div style="width: 80px;">
+                                                        <p class="mb-0 total-price"></p>
+                                                    </div>
+                                                    <div style="width: 25px;">
+                                                        <p class="mb-0"></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal">Checkout</button>
+                <button type="button" class="btn btn-secondary btn-continue" data-dismiss="modal">Continue Shopping</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script type='text/javascript' src='assets/js/jquery-3.6.0.min.js'></script>
+<script type='text/javascript' src='assets/js/main.js'></script>
+</body>
+
+
+</html>

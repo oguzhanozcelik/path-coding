@@ -1,0 +1,222 @@
+button {
+  background: transparent;
+  outline: none;
+  border: none;
+}
+
+.lazy {
+  display: block;
+  width: 100%;
+}
+
+.main-section {
+  padding-top: 150px;
+}
+
+.navbar .navbar-brand img {
+  max-width: 230px;
+}
+.navbar .navbar-nav .nav-link {
+  font-weight: 500;
+  font-size: 16px;
+}
+.navbar .navbar-nav .nav-link:hover {
+  color: #b52735;
+}
+.navbar .navbar-nav .nav-link.active {
+  color: #b52735;
+}
+.navbar .shopping-cart {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  font-size: 15px;
+}
+.navbar .shopping-cart:hover img {
+  color: white;
+}
+.navbar .shopping-cart img {
+  width: 20px;
+  height: 20px;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+#products .product {
+  width: 49%;
+  padding: 0;
+  margin: 0.5%;
+}
+#products .product:hover .card-title span {
+  display: inline-block;
+}
+#products .product .product-image {
+  height: 150px;
+}
+#products .product .product-image img {
+  height: 100%;
+  object-fit: cover;
+}
+#products .product .card-title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 40px;
+}
+#products .product .card-title span {
+  cursor: pointer;
+  display: none;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  padding: 5px;
+  border-radius: 5px;
+}
+#products .product .card-title span.favorited {
+  color: #b52735;
+}
+#products .product .card-title span:hover {
+  color: #b52735;
+}
+#products .product .card-title span svg, #products .product .card-title span img {
+  width: 20px;
+  height: 20px;
+  margin-left: 5px;
+}
+#products .product .price-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+#products .product .price-section span {
+  margin-right: 2%;
+}
+#products .product .price-section .normal-price {
+  text-decoration: line-through;
+}
+#products .product .price-section .cheapest-price b {
+  color: #b52735;
+}
+#products .product .price-section .sale-price {
+  font-weight: bold;
+}
+#products .product .price-section .savings {
+  color: red;
+}
+#products .product .actions button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+#products .product .actions button img {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+
+.favoriteModal .favorites-list .product {
+  width: 100%;
+  margin-bottom: 1%;
+}
+.favoriteModal .favorites-list .product .product-image {
+  height: 100px;
+}
+.favoriteModal .favorites-list .product .product-image img {
+  height: 100%;
+  object-fit: contain;
+}
+.favoriteModal .favorites-list .product .remove-favorite {
+  cursor: pointer;
+}
+.favoriteModal .favorites-list .product .remove-favorite:hover {
+  color: #b52735;
+}
+
+.shop-product {
+  border-bottom: 1px solid #ebebeb;
+}
+
+.cart-total {
+  border-top: 1px solid #ebebeb;
+  padding-top: 5px;
+}
+.cart-total .total-price {
+  font-weight: bold;
+  color: #b52735;
+}
+
+.remove-item {
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+}
+.remove-item:hover {
+  background: #ebebeb;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+}
+
+.shopping-list {
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+.gameModal .cheapest-modal {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+}
+.gameModal .cheapest-modal span.date {
+  width: 100%;
+}
+.gameModal .cheapest-modal span.price {
+  font-weight: bold;
+  color: #b52735;
+}
+.gameModal .list-group {
+  max-height: 300px;
+  overflow: scroll;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.gameModal .list-group .list-group-item {
+  width: 49%;
+}
+.gameModal .list-group .list-group-item .price-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.gameModal .list-group .list-group-item .price-section span {
+  margin-right: 2%;
+}
+.gameModal .list-group .list-group-item .price-section .normal-price {
+  text-decoration: line-through;
+}
+.gameModal .list-group .list-group-item .price-section .cheapest-price b {
+  color: #b52735;
+}
+.gameModal .list-group .list-group-item .price-section .sale-price {
+  font-weight: bold;
+}
+.gameModal .list-group .list-group-item .price-section .savings {
+  color: red;
+}
+
+.toast {
+  z-index: 10001;
+  bottom: 20px !important;
+}
+.toast .toast-header {
+  font-size: 15px;
+}
+.toast .toast-body {
+  font-size: 20px;
+  color: #b52735;
+}
+
+/*# sourceMappingURL=main.css.map */

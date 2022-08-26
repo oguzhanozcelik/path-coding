@@ -1,0 +1,291 @@
+$mainRed : #b52735;
+button {
+  background : transparent;
+  outline    : none;
+  border     : none;
+}
+
+.lazy {
+  display : block;
+  width   : 100%;
+}
+
+.main-section {
+  padding-top : 150px;
+}
+
+.navbar {
+  .navbar-brand {
+    img {
+      max-width : 230px;
+    }
+  }
+
+  .navbar-nav {
+    .nav-link {
+      font-weight : 500;
+      font-size   : 16px;
+
+      &:hover {
+        color : $mainRed
+      }
+
+      &.active {
+        color : $mainRed
+      }
+    }
+  }
+
+  .shopping-cart {
+    display         : flex;
+    flex-direction  : row;
+    justify-content : space-around;
+    font-size       : 15px;
+
+    &:hover {
+      img {
+        color : white
+      }
+    }
+
+    img {
+      width  : 20px;
+      height : 20px;
+    }
+  }
+}
+
+.w-100 {
+  width : 100%;
+}
+
+#products {
+  .product {
+    width   : 49%;
+    padding : 0;
+    margin  : .5%;
+
+    &:hover {
+      .card-title {
+        span {
+          display : inline-block;
+        }
+      }
+    }
+
+    .product-image {
+      height : 150px;
+
+      img {
+        height     : 100%;
+        object-fit : cover;
+      }
+    }
+
+    .card-title {
+      display         : flex;
+      flex-direction  : row;
+      align-items     : center;
+      justify-content : space-between;
+      height          : 40px;
+
+      span {
+        cursor        : pointer;
+        display       : none;
+        font-size     : 14px;
+        border        : 1px solid #ccc;
+        padding       : 5px;
+        border-radius : 5px;
+
+        &.favorited {
+          color : $mainRed;
+        }
+
+        &:hover {
+          color : $mainRed;
+        }
+
+        svg, img {
+          width       : 20px;
+          height      : 20px;
+
+          margin-left : 5px;
+        }
+      }
+    }
+
+    .price-section {
+      display         : flex;
+      flex-direction  : row;
+      justify-content : flex-start;
+      align-items     : center;
+
+      span {
+        margin-right : 2%;
+      }
+
+      .normal-price {
+        text-decoration : line-through;
+      }
+
+      .cheapest-price {
+        b {
+          color : $mainRed;
+        }
+      }
+
+      .sale-price {
+        font-weight : bold;
+      }
+
+      .savings {
+        color : red
+      }
+    }
+
+    .actions {
+      button {
+        display        : flex;
+        flex-direction : row;
+        align-items    : center;
+
+        img {
+          width        : 20px;
+          height       : 20px;
+          margin-right : 5px;
+        }
+      }
+    }
+  }
+}
+
+.favoriteModal {
+  .favorites-list {
+    .product {
+      width         : 100%;
+      margin-bottom : 1%;
+
+      .product-image {
+        height : 100px;
+
+        img {
+          height     : 100%;
+          object-fit : contain;
+        }
+      }
+
+      .remove-favorite {
+        cursor : pointer;
+
+        &:hover {
+          color : $mainRed;
+        }
+      }
+    }
+  }
+}
+
+.shop-product {
+  border-bottom : 1px solid #ebebeb;
+}
+
+.cart-total {
+  border-top  : 1px solid #ebebeb;
+  padding-top : 5px;
+
+  .total-price {
+    font-weight : bold;
+    color       : $mainRed;
+  }
+}
+
+.remove-item {
+  cursor : pointer;
+  width  : 20px;
+  height : 20px;
+
+  &:hover {
+    background            : #ebebeb;
+    border-radius         : 4px;
+    -webkit-border-radius : 4px;
+    -moz-border-radius    : 4px;
+  }
+}
+
+
+.shopping-list {
+  padding-bottom : 10px;
+  text-align     : center;
+}
+
+.gameModal {
+  .cheapest-modal {
+    display         : flex;
+    flex-flow       : row wrap;
+    justify-content : flex-start;
+
+    span.date {
+      width : 100%;
+    }
+
+    span.price {
+      font-weight : bold;
+      color       : $mainRed;
+    }
+  }
+
+  .list-group {
+    max-height     : 300px;
+    overflow       : scroll;
+
+    flex-direction : row;
+    flex-wrap      : wrap;
+
+    .list-group-item {
+      width : 49%;
+
+      .price-section {
+        display        : flex;
+        flex-direction : column;
+        align-items    : flex-start;
+
+        span {
+          margin-right : 2%;
+        }
+
+        .normal-price {
+          text-decoration : line-through;
+        }
+
+        .cheapest-price {
+          b {
+            color : $mainRed;
+          }
+        }
+
+        .sale-price {
+          font-weight : bold;
+        }
+
+        .savings {
+          color : red
+        }
+      }
+    }
+  }
+}
+
+
+.toast {
+  z-index : 10001;
+  bottom  : 20px !important;
+
+  .toast-header {
+    font-size : 15px;
+  }
+
+  .toast-body {
+    font-size : 20px;
+    color     : $mainRed
+  }
+}
