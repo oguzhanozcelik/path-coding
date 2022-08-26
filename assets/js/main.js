@@ -14,7 +14,12 @@ $(document).ready(function () {
     });
 
     let totalItems = JSON.parse(localStorage.getItem("cart"));
-    $(".item-total-quantity").empty().append(totalItems.length)
+    if(totalItems !== null){
+        $(".item-total-quantity").empty().append(totalItems.length)
+    }else{
+        $(".item-total-quantity").append("0");
+    }
+
     let dataOption = {
         title: "batman",
         limit: 10,
@@ -86,7 +91,7 @@ $(document).ready(function () {
                                     '                              <span class="cheapest-price">Cheapest Price: <b>$' + cheapest + '</b></span> ' +
                                     '                           </div>' +
                                     '                           <div class="actions mt-3">' +
-                                    '                               <button class="btn btn-danger quick-view" data-toggle="modal" data-target="#gameModal" data-product-id="' + gId + '" data-cheapest="' + cheapestDealID + '"><img src="assets/images/quick.svg" alt="Add to favorites"/> Quick View</button>' +
+                                    '                               <button class="btn btn-danger quick-view" data-toggle="modal" data-target="#gameModal" data-title="'+value.external+'" data-product-id="' + gId + '" data-cheapest="' + cheapestDealID + '"><img src="assets/images/quick.svg" alt="Add to favorites"/> Quick View</button>' +
                                     '                           </div>    ' +
                                     '                        </div>' +
                                     '                    </div>' +
@@ -137,7 +142,7 @@ $(document).ready(function () {
                         '                              <span class="cheapest-price">Cheapest Price: <b>$' + cheapest + '</b></span> ' +
                         '                           </div>' +
                         '                           <div class="actions mt-3">' +
-                        '                               <button class="btn btn-danger quick-view" data-toggle="modal" data-target="#gameModal" data-product-id="' + gId + '" data-cheapest="' + cheapestDealID + '"><img src="assets/images/quick.svg" alt="Add to favorites"/> Quick View</button>' +
+                        '                               <button class="btn btn-danger quick-view" data-toggle="modal" data-target="#gameModal" data-title="'+value.external+'" data-product-id="' + gId + '" data-cheapest="' + cheapestDealID + '"><img src="assets/images/quick.svg" alt="Add to favorites"/> Quick View</button>' +
                         '                           </div>    ' +
                         '                        </div>' +
                         '                    </div>' +
@@ -229,7 +234,11 @@ $(document).ready(function () {
         toast("Success", "Product added to cart!")
 
         $(".item-total-quantity").empty().append(products.length)
-
+        addItemGoogle({
+            id: id,
+            price: price,
+            name: title,
+        })
     }
     function toast(title, message) {
         $(".toast-title").empty().append(title);
@@ -402,10 +411,15 @@ $(document).ready(function () {
     });
     $(document).on("click", ".quick-view", function () {
         const pID = $(this).attr("data-product-id");
+        const pName = $(this).attr("data-title");
         getSingle(pID);
         setTimeout(function () {
             $('#gameModal').modal('show')
-        }, 500)
+        }, 500);
+        productClick({
+            id: pID,
+            name: pName,
+        })
     });
     $(document).on("click", ".shopping-cart", function () {
         listCart();
@@ -424,6 +438,7 @@ $(document).ready(function () {
         const title = $(this).attr("data-name");
         const price = $(this).attr("data-price");
         addToCart(id, title, thumb, price);
+
     });
     $(".btn-continue").click(function () {
         $('#cartModal').modal('hide')
@@ -449,5 +464,44 @@ $(document).ready(function () {
             getProduct("batman", 10, dataOption.page)
         }
     });
+    /**
+     * Call this function when a user clicks on a product link. This function uses the event
+     * callback datalayer variable to handle navigation after the ecommerce data has been sent
+     * to Google Analytics.
+     * @param {Object} productObj An object representing a product.
+     */
+    function productClick(productObj) {
+        console.log("-> productClick");
+        dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+        dataLayer.push({
+            'ecommerce': {
+                'detail': {
+                    'actionField': {'list': 'Apparel Gallery'},    // 'detail' actions have an optional list property.
+                    'products': [{
+                        'name': productObj.id,
+                        'title': productObj.title
+                    }]
+                }
+            }
+        });
+    }
+
+    function addItemGoogle(productObj){
+        dataLayer.push({ ecommerce: null });
+        dataLayer.push({
+            'event': 'addToCart',
+            'ecommerce': {
+                'currencyCode': 'USD',
+                'add': {                                // 'add' actionFieldObject measures.
+                    'products': [{                        //  adding a product to a shopping cart.
+                        'name': productObj.title,
+                        'id': productObj.id,
+                        'price': productObj.price,
+                        'quantity': 1
+                    }]
+                }
+            }
+        });
+    }
 
 });
